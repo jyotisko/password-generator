@@ -1,4 +1,5 @@
-////////////////////////////////////
+// const { default: swal } = require("sweetalert");
+
 // Query Selectors
 const lengthEl = document.querySelector('.length');
 const resultEl = document.querySelector('.result');
@@ -80,11 +81,11 @@ generateBtn.addEventListener('click', () => {
   if (uppercaseEl.checked && lowercaseEl.checked && symbolsEl.checked && numbersEl.checked) generateAndRenderPassword(length, allArr);
 
   // Nothing checked
-  if (!uppercaseEl.checked && !lowercaseEl.checked && !symbolsEl.checked && !numbersEl.checked) return alert('Please Fill The Checkboxes');
+  if (!uppercaseEl.checked && !lowercaseEl.checked && !symbolsEl.checked && !numbersEl.checked) return swal({ text: 'Please check the checkbox(es).', icon: 'warning' });
 });
 
 copyBtn.addEventListener('click', () => {
   const value = resultEl.textContent;
-  if (!value) return
-  navigator.clipboard.writeText(value).then(console.log('Copied!')).catch(_ => alert('Something went wrong. Please copy it manually.'));
+  if (!value) return;
+  navigator.clipboard.writeText(value).then(console.log('Copied!')).catch(_ => swal({ title: 'Something went wrong!', text: 'Please copy it manually ;)', icon: 'error' }));
 });
